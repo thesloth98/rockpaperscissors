@@ -28,24 +28,35 @@ const playerSelection =  prompt("Pick among 'Rock, Paper, Scissors' to start the
 const computerSelection = computerChoice();
 
 const playRound = (playerSelection, computerSelection) => {
-    switch(true) {
-    case (playerSelection === computerSelection):
-        return `It\'s a tie! You both picked ${playerSelection} `;
-        break;
-    case (playerSelection === 'rock' && computerSelection ==='scissors'):
-    case (playerSelection === 'scissors' && computerSelection === 'paper'):
-    case (playerSelection === 'paper' && computerSelection === 'rock'):
-        playerScore++;
-        return `You Win! ${playerSelection} beats ${computerSelection}! Your score: ${playerScore} vs. Computer score: ${computerScore}`;
-        break;
-    default:
-        computerScore++;
-        return `You Lose! ${computerSelection} beats ${playerSelection} Your score: ${playerScore} vs. Computer score: ${computerScore}`;
-        break;
-    } 
+                if (playerSelection === computerSelection) {
+                    return `It\'s a tie! You both picked ${playerSelection} `;
+                } else if (playerSelection === 'rock' && computerSelection ==='scissors') {
+                    playerScore++;
+                    return `You Win! ${playerSelection} beats ${computerSelection}!`;
+                } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+                    playerScore++;
+                    return `You Win! ${playerSelection} beats ${computerSelection}!`;
+                } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+                    playerScore++;
+                    return `You Win! ${playerSelection} beats ${computerSelection}!`;
+                } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+                    computerScore++;
+                    return`You Lose! ${computerSelection} beats ${playerSelection}`;
+                } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+                    computerScore++;
+                    return`You Lose! ${computerSelection} beats ${playerSelection}`;
+                } else if (playerSelection === 'rock' && computerSelection === 'paper') {
+                    computerScore++;
+                    return`You Lose! ${computerSelection} beats ${playerSelection}`;
+                } else {
+                    return `Something went wrong.`
+                }
 }
 
-// Looping the game
+console.log(computerSelection);
+console.log(playRound(playerSelection, computerSelection))
+
+//Looping the game
 
 // const game = () => {
 //  for (let i=0; i<5; i++) {
@@ -62,7 +73,7 @@ const playRound = (playerSelection, computerSelection) => {
 //      console.log(playerScore);
 //      console.log(computerScore);
 //     } else {
-//         return PlayRound();
+//         return playRound();
 //     }
 // }
 // }
@@ -71,6 +82,3 @@ const playRound = (playerSelection, computerSelection) => {
 //     playerScore =0;
 //     computerScore=0;
 // }
-
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection))
